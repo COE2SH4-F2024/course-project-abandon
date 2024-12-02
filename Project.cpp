@@ -27,13 +27,15 @@ int main(void)
 
     Initialize();
 
-    while(exitFlag == false)  
+    while(false == game->getExitFlagStatus())
     {
         GetInput();
         RunLogic();
         DrawScreen();
         LoopDelay();
+        
     }
+    
 
     CleanUp();
 
@@ -65,6 +67,7 @@ void RunLogic(void)
 {
     player->updatePlayerDir();
     player->movePlayer();
+    
 
 }
 
@@ -101,6 +104,7 @@ void DrawScreen(void)
         }
         MacUILib_printf("\n");
     }
+    MacUILib_printf("score: %d\n",game->getScore());
 
 }
 

@@ -3,12 +3,13 @@
 #include <ctime>
 
 Food::Food(){
-    foodPos.pos = new Pos{-1,-1};
-    foodPos.symbol = 'x';
+    foodPos = new objPos{-1,-1,'x'};
+    
 }
 
 Food::~Food(){
-        delete foodPos.pos;
+        delete foodPos;
+        
 }
 
 void Food::generateFood(const objPos& obstacle, int boardSizeX, int boardSizeY) {
@@ -22,13 +23,13 @@ void Food::generateFood(const objPos& obstacle, int boardSizeX, int boardSizeY) 
         y++;
 
         if (x != obstacle.pos->x || y != obstacle.pos->y) {
-            foodPos.pos->x = x;
-            foodPos.pos->y = y;
+            foodPos->pos->x = x;
+            foodPos->pos->y = y;
             valid = true;
         }
     }
 }
 
 objPos Food::getFoodPos() const {
-    return foodPos;
+    return *foodPos;
 }

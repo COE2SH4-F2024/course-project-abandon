@@ -37,6 +37,9 @@ void Player::updatePlayerDir()
     switch(mainGameMechsRef->getInput())
     {                      
         // Add more key processing here
+        case '\b':
+            mainGameMechsRef->setExitTrue();
+            break;
         case 'w':
             if(myDir!=  DOWN){
                 myDir = UP;
@@ -99,8 +102,21 @@ void Player::movePlayer()
         }
         
     }
-    playerPosList->insertHead(playerPos);
-    playerPosList->removeTail();
+    if((playerPos.pos->x == mainGameMechsRef->getFoodPos().pos->x) && (playerPos.pos->y == mainGameMechsRef->getFoodPos().pos->y)){
+        playerPosList->insertHead(playerPos);
+        mainGameMechsRef->generateFood(playerPos);
+        mainGameMechsRef->incrementScore();
+    }
+    else{
+       playerPosList->insertHead(playerPos);
+       playerPosList->removeTail();  
+    }
 }
 
 // More methods to be added
+void Player::increasePlayerLength(){
+
+}
+bool Player::checkFoodConsumption(){
+
+}

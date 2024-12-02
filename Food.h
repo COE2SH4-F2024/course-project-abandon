@@ -5,7 +5,7 @@
 
 class Food {
 private:
-    objPos foodPos; 
+    objPos * foodPos; 
 
 public:
     Food();
