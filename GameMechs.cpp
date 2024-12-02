@@ -3,38 +3,27 @@
 
 GameMechs::GameMechs()  
 {
+food = new Food();
  input = 0;
  exitFlag = false;
  loseFlag = false;
  score = 0;
- boardSizeX = 20;
- boardSizeY = 20;
+ boardSizeX = 30;
+ boardSizeY = 15;
 }
-/*
-
-GameMechs::GameMechs()  
-{
- input = 0;
- exitFlag = false;
- loseFlag = false;
- score = 0;
- boardSizeX = 20;
- boardSizeY = 20;
 
 
-*/
-/*
 GameMechs::GameMechs(int boardX, int boardY):input(0),exitFlag(false),loseFlag(false),score(0),boardSizeX(boardX),boardSizeY(boardY)
 {
-
+food = new Food();
 }
-*/
+
 
 
 // do you need a destructor?
 GameMechs::~GameMechs()
 {
-
+delete food;
 }
 
 bool GameMechs::getExitFlagStatus() const
@@ -96,3 +85,9 @@ input = 0;
 }
 
 // More methods should be added here
+void GameMechs::generateFood(const objPos& playerPos) {
+    food->generateFood(playerPos, boardSizeX, boardSizeY);
+}
+objPos GameMechs::getFoodPos() const {
+    return food->getFoodPos();
+}

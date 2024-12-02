@@ -7,8 +7,8 @@
 using namespace std;
 
 #define DELAY_CONST 100000
-#define Y_SIZE 20
-#define X_SIZE 20
+#define Y_SIZE 15
+#define X_SIZE 30
 Player * player;
 GameMechs * game;
 
@@ -45,9 +45,11 @@ void Initialize(void)
     
     MacUILib_init();
     MacUILib_clearScreen();
+    objPos foodpos(5,5,'x');
     exitFlag = false;
     game = new GameMechs();
     player = new Player(game);
+    game->generateFood(foodpos);
 }
 
 void GetInput(void)
@@ -85,6 +87,9 @@ void DrawScreen(void)
             }
             if ((xx == 0) || (yy == 0) || (xx == X_SIZE - 1) || (yy == Y_SIZE -1)){
                 MacUILib_printf("#");                
+            }
+            else if (xx == game->getFoodPos().pos->x && yy == game->getFoodPos().pos->y) {
+                MacUILib_printf("%c",game->getFoodPos().symbol);
             }
             else if(found == 1){
                 MacUILib_printf("%c",a->getElement(k).getSymbol());
