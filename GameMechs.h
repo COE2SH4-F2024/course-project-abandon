@@ -7,6 +7,7 @@
 #include "objPos.h"
 #include "objPosArrayList.h"
 
+
 using namespace std;
 
 class GameMechs
@@ -21,6 +22,7 @@ class GameMechs
         int boardSizeY;
 
         objPos food;
+        
 
     public:
         GameMechs();
@@ -43,6 +45,8 @@ class GameMechs
         void incrementScore();
         
         // More methods should be added here
+        
+        
 };
 
 #endif

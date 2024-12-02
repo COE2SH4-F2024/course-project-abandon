@@ -9,8 +9,8 @@ Player::Player(GameMechs* thisGMRef)
     objPos playerPos;
     x = mainGameMechsRef->getBoardSizeX();
     y = mainGameMechsRef->getBoardSizeY();
-    playerPos.pos->x = 20/2;
-    playerPos.pos->y = 20/2;
+    playerPos.pos->x = x/2;
+    playerPos.pos->y = y/2;
     playerPos.symbol = '*'; 
     playerPosList = new(objPosArrayList);
     playerPosList->insertHead(playerPos); 
