@@ -111,12 +111,13 @@ void Player::movePlayer()
        playerPosList->insertHead(playerPos);
        playerPosList->removeTail();  
     }
+    for(int j = 1; j < playerPosList->getSize(); j++){
+        if((playerPosList->getHeadElement().pos->x == playerPosList->getElement(j).pos->x)&& (playerPosList->getHeadElement().pos->y == playerPosList->getElement(j).pos->y)){
+            mainGameMechsRef->setLoseFlag();
+        }
+
+    }
+    
 }
 
 // More methods to be added
-void Player::increasePlayerLength(){
-
-}
-bool Player::checkFoodConsumption(){
-
-}

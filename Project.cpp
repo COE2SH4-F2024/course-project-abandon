@@ -27,7 +27,7 @@ int main(void)
 
     Initialize();
 
-    while(false == game->getExitFlagStatus())
+    while((false == game->getExitFlagStatus()) && (false == game->getLoseFlagStatus()))
     {
         GetInput();
         RunLogic();
@@ -117,6 +117,11 @@ void LoopDelay(void)
 void CleanUp(void)
 {
     MacUILib_clearScreen();
+    MacUILib_printf("your score was:%d",game->getScore());
+    if(game->getLoseFlagStatus() == true){
+        MacUILib_printf("\nyour snake ate its body lol");
+
+    }
     delete player; 
     delete game;
     MacUILib_uninit();
