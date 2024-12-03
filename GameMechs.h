@@ -20,8 +20,9 @@ class GameMechs
 
         int boardSizeX;
         int boardSizeY;
-
-        Food* food;
+        Food * food;
+        
+        
 
     public:
         GameMechs();
@@ -45,10 +46,9 @@ class GameMechs
         objPos getFoodPos() const;   
         void generateFood(const objPos& playerPos);
         
-        
-        void Draw(int boardSizeX, int boardSizeY);
-        
         // More methods should be added here
+        
+        
 };
 
 #endif

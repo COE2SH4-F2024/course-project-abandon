@@ -1,45 +1,59 @@
 #include "GameMechs.h"
-#include <iostream>
-GameMechs::GameMechs():input(0),exitFlag(false),loseFlag(false),score(0),boardSizeX(30),boardSizeY(15)
+
+
+GameMechs::GameMechs()  
 {
-    food = new Food();
+food = new Food();
+ input = 0;
+ exitFlag = false;
+ loseFlag = false;
+ score = 0;
+ boardSizeX = 30;
+ boardSizeY = 15;
 }
+
 
 GameMechs::GameMechs(int boardX, int boardY):input(0),exitFlag(false),loseFlag(false),score(0),boardSizeX(boardX),boardSizeY(boardY)
 {
-    food = new Food();
+food = new Food();
 }
+
+
 
 // do you need a destructor?
 GameMechs::~GameMechs()
 {
-    delete food;
+delete food;
 }
 
 bool GameMechs::getExitFlagStatus() const
 {
-     return exitFlag;
+return exitFlag;
 }
 
 bool GameMechs::getLoseFlagStatus() const
 {
-    return loseFlag;
+ return loseFlag;
 }
     
 
 char GameMechs::getInput() const
 {
-    return input;
+return input;
 }
 
 int GameMechs::getScore() const
 {
-    return score;
+return score;
 }
 
 void GameMechs::incrementScore()
 {
+<<<<<<< HEAD
     score++;
+=======
+score++;
+>>>>>>> e24f0a2a9cefdd680dea2bf22402bc187604ec71
 }
 
 int GameMechs::getBoardSizeX() const
@@ -79,35 +93,4 @@ void GameMechs::generateFood(const objPos& playerPos) {
 }
 objPos GameMechs::getFoodPos() const {
     return food->getFoodPos();
-}
-void GameMechs::Draw(int boardSizeX, int boardSizeY)
-{
-    
-    for(int i=0;i<boardSizeX;i++)
-    {
-        std::cout<<"#";
-    }
-    std::cout<<std::endl;
-    for(int j=0;j<boardSizeY;j++)
-    {
-        for(int i=0;i<boardSizeX;i++)
-        {
-            if(i==0||i==boardSizeX-1)
-            {
-                std::cout<<'#';
-            }
-            else if (i == food->getFoodPos().pos->x && j == food->getFoodPos().pos->y) {
-                std::cout << food->getFoodPos().symbol;
-            }
-            else{
-                std::cout<<' ';
-            }
-        }
-        std::cout<<std::endl;
-    }
-    for(int i=0;i<boardSizeX;i++)
-    {
-        std::cout<<"#";
-    }
-    std::cout << std::endl;
 }
