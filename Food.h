@@ -5,13 +5,14 @@
 
 class Food {
 private:
+// Pointer to store the position and symbol 
     objPos * foodPos; 
-
 public:
-    Food();
-    ~Food(); 
-
+    Food();//Constructor
+    ~Food(); //Destructor
+    // Generates a random position, avoiding obstacle's position
     void generateFood(const objPos& obstacle, int boardSizeX, int boardSizeY);
+    // Returns the position of the food
     objPos getFoodPos() const;
 };
 #endif

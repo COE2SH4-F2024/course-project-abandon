@@ -1,6 +1,6 @@
 #include "GameMechs.h"
 
-
+//Default constructor
 GameMechs::GameMechs()  
 {
 food = new Food();
@@ -12,55 +12,50 @@ food = new Food();
  boardSizeY = 15;
 }
 
-
+//Constructor
 GameMechs::GameMechs(int boardX, int boardY):input(0),exitFlag(false),loseFlag(false),score(0),boardSizeX(boardX),boardSizeY(boardY)
 {
 food = new Food();
 }
 
-
-
 // do you need a destructor?
+//Destructor
 GameMechs::~GameMechs()
 {
-delete food;
+    delete food;
 }
 
 bool GameMechs::getExitFlagStatus() const
 {
-return exitFlag;
+    return exitFlag;
 }
 
 bool GameMechs::getLoseFlagStatus() const
 {
- return loseFlag;
+    return loseFlag;
 }
     
-
+//Returns the most recent input character
 char GameMechs::getInput() const
 {
-return input;
+    return input;
 }
-
+//Returns current score
 int GameMechs::getScore() const
 {
-return score;
+    return score;
 }
-
+//Increments score by 1
 void GameMechs::incrementScore()
 {
-<<<<<<< HEAD
     score++;
-=======
-score++;
->>>>>>> e24f0a2a9cefdd680dea2bf22402bc187604ec71
 }
-
+//Returns width
 int GameMechs::getBoardSizeX() const
 {
     return boardSizeX;
 }
-
+//Returns height
 int GameMechs::getBoardSizeY() const
 {
     return boardSizeY;
@@ -81,13 +76,14 @@ void GameMechs::setInput(char this_input)
 {
     input = this_input;
 }
-
+//Clear current input
 void GameMechs::clearInput()
 {
     input = 0;
 }
 
-// More methods should be added here
+//More methods should be added here
+//Generate a new random position
 void GameMechs::generateFood(const objPos& playerPos) {
     food->generateFood(playerPos, boardSizeX, boardSizeY);
 }
