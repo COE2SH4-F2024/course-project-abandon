@@ -33,10 +33,10 @@ objPosArrayList * Player::getPlayerPos() const
 
 void Player::updatePlayerDir()
 {
-// PPA3 input processing logic
+    //input processing
     switch(mainGameMechsRef->getInput())
-    {                      
-        // Add more key processing here
+    {           
+                   
         case '\b':
             mainGameMechsRef->setExitTrue();
             break;
@@ -45,13 +45,11 @@ void Player::updatePlayerDir()
                 myDir = UP;
             }
             break;
-        // Add more key processing here
         case 'd':
             if(myDir !=  LEFT){
                 myDir = RIGHT;
             }
             break;
-        // Add more key processing here
         case 'a':
             if(myDir !=  RIGHT){
                 myDir = LEFT;
@@ -72,7 +70,7 @@ void Player::movePlayer()
 {
     objPos playerPos;
     playerPos = playerPosList->getHeadElement();
-    // PPA3 Finite State Machine logic
+    //Finite State Machine logic
      if (myDir == UP){
         playerPos.pos->y--;
         if (playerPos.pos->y <= 0){
@@ -102,15 +100,18 @@ void Player::movePlayer()
         }
         
     }
+    //check if the head of the snake ate the food and increment score
     if((playerPos.pos->x == mainGameMechsRef->getFoodPos().pos->x) && (playerPos.pos->y == mainGameMechsRef->getFoodPos().pos->y)){
         playerPosList->insertHead(playerPos);
         mainGameMechsRef->generateFood(playerPos);
         mainGameMechsRef->incrementScore();
     }
+    //else move the head of the snake and remove tail
     else{
        playerPosList->insertHead(playerPos);
        playerPosList->removeTail();  
     }
+    //if snake head touches body set lose flag
     for(int j = 1; j < playerPosList->getSize(); j++){
         if((playerPosList->getHeadElement().pos->x == playerPosList->getElement(j).pos->x)&& (playerPosList->getHeadElement().pos->y == playerPosList->getElement(j).pos->y)){
             mainGameMechsRef->setLoseFlag();

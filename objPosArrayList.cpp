@@ -27,6 +27,7 @@ return listSize;
 
 void objPosArrayList::insertHead(objPos thisPos)
 {
+//inserts element at top of list
 if(listSize == arrayCapacity)
     { 
         return;
@@ -40,6 +41,7 @@ for(int i = listSize; i > 0; i--)
 
 void objPosArrayList::insertTail(objPos thisPos)
 {
+    //insert and the end of the list
  if(listSize == arrayCapacity)
     {
         return;
@@ -51,6 +53,7 @@ void objPosArrayList::insertTail(objPos thisPos)
 
 void objPosArrayList::removeHead()
 {
+    //removes first element in list
     if(listSize == 0)
     {
         
@@ -66,6 +69,7 @@ void objPosArrayList::removeHead()
 
 void objPosArrayList::removeTail()
 {
+    //removes last element in list
      if(listSize == 0)
     {
         return;
@@ -77,6 +81,7 @@ void objPosArrayList::removeTail()
 
 objPos objPosArrayList::getHeadElement() const
 {
+    //gets the objpos for the first element of the list
     if(listSize == 0)
     {
          return objPos();
@@ -87,6 +92,7 @@ objPos objPosArrayList::getHeadElement() const
 
 objPos objPosArrayList::getTailElement() const
 {
+    //gets the objpos for the last element of the list 
  if(listSize == 0)
     {
         return objPos();
@@ -97,6 +103,7 @@ objPos objPosArrayList::getTailElement() const
 
 objPos objPosArrayList::getElement(int index) const
 {
+    //gets the objpos for any element given the index
 if (index < 0 || index >= listSize) {
          return objPos();
     }

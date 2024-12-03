@@ -7,8 +7,6 @@
 using namespace std;
 
 #define DELAY_CONST 100000
-#define Y_SIZE 15
-#define X_SIZE 30
 Player * player;
 GameMechs * game;
 
@@ -76,11 +74,15 @@ void DrawScreen(void)
     MacUILib_clearScreen();
     int xx,yy,found = 0;
     int k;
+    int xsize = game->getBoardSizeX();
+    int ysize = game->getBoardSizeY();
     objPosArrayList * a;
     a = player->getPlayerPos();
-    for(yy = 0; yy < Y_SIZE; yy++){
-        for(xx= 0; xx < X_SIZE; xx++){
+    //draw function checks what to display for each character on the game board 
+    for(yy = 0; yy < ysize; yy++){
+        for(xx= 0; xx < xsize; xx++){
             found = 0;
+            //checks if we need to display snake body
             for(k = 0; k<a->getSize(); k++){
                 
                 if((xx == a->getElement(k).pos->x) && (yy == a->getElement(k).pos->y)){
@@ -88,12 +90,15 @@ void DrawScreen(void)
                     break;
                 }
             }
-            if ((xx == 0) || (yy == 0) || (xx == X_SIZE - 1) || (yy == Y_SIZE -1)){
+            //checks if we need to display the border
+            if ((xx == 0) || (yy == 0) || (xx == xsize - 1) || (yy == ysize -1)){
                 MacUILib_printf("#");                
             }
+            //checks if we need to display the food
             else if (xx == game->getFoodPos().pos->x && yy == game->getFoodPos().pos->y) {
                 MacUILib_printf("%c",game->getFoodPos().symbol);
             }
+            //if found display the snake body
             else if(found == 1){
                 MacUILib_printf("%c",a->getElement(k).getSymbol());
             }
@@ -119,7 +124,7 @@ void CleanUp(void)
     MacUILib_clearScreen();
     MacUILib_printf("your score was:%d",game->getScore());
     if(game->getLoseFlagStatus() == true){
-        MacUILib_printf("\nyour snake ate its body lol");
+        MacUILib_printf("\nyour snake ate its body");
 
     }
     delete player; 
